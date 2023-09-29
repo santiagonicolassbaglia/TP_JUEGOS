@@ -1,0 +1,10 @@
+/* registro.component.css */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
