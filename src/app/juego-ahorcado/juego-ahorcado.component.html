@@ -1,0 +1,38 @@
+<div class="ahorcado-container">
+  <!-- Aquí puedes mostrar una imagen del ahorcado (puede ser un dibujo animado) -->
+  <img src="assets/image/ahorcado.png" alt="Ahorcado"  style="width: 10rem;"/>
+
+  
+  <!-- Mostrar las letras adivinadas -->
+  <div class="word-display">
+    <span *ngFor="let letter of palabraOculta">{{ letter }}</span>
+  </div>
+
+  <!-- Área para que el jugador ingrese una letra -->
+  <div class="guess-input">
+    <label for="letterInput" style="margin-right: 2rem; ">Ingresa una letra: </label>
+    <input
+      type="text"
+      id="letterInput"
+      [(ngModel)]="letraInput"
+      (keydown.enter)="adivinarLetra()"
+    />
+    <br>
+    <br><br>
+    <button (click)="adivinarLetra()">Adivinar</button>
+  </div>
+
+  <!-- Mostrar el número de oportunidades restantes -->
+  <div class="attempts-left">
+    Intentos restantes: {{ intentosRestantes }}
+  </div>
+
+  <!-- Mostrar mensajes de victoria o derrota -->
+  <div class="game-message">
+    <p *ngIf="">Ya has ingresado esta letra</p>
+ 
+  
+    <p *ngIf="juegoGanado">¡Has ganado!</p>
+    <p *ngIf="juegoTerminado">¡Has perdido! La palabra era "{{ palabraAdivinar }}"</p>
+  </div>
+</div>

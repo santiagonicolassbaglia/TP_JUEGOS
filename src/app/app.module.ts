@@ -12,6 +12,7 @@ import { LaboivComponent } from './asgnaturas/laboiv/laboiv.component';
 
 import { Usuario } from '../app/clases/usuario';
 import { RegistroComponent } from './registro/registro.component';
+import { JuegoAhorcadoComponent } from './juego-ahorcado/juego-ahorcado.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegistroComponent } from './registro/registro.component';
     HomeComponent,
     PresentacionComponent,
     LaboivComponent,
-    RegistroComponent
+    RegistroComponent,
+    JuegoAhorcadoComponent,
   ],
   imports: [
     BrowserModule
