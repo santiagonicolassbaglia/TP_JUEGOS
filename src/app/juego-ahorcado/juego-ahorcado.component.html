@@ -7,32 +7,43 @@
   <div class="word-display">
     <span *ngFor="let letter of palabraOculta">{{ letter }}</span>
   </div>
-
-  <!-- Área para que el jugador ingrese una letra -->
+ 
   <div class="guess-input">
     <label for="letterInput" style="margin-right: 2rem; ">Ingresa una letra: </label>
     <input
       type="text"
+      maxlength="1"
       id="letterInput"
       [(ngModel)]="letraInput"
       (keydown.enter)="adivinarLetra()"
     />
     <br>
     <br><br>
-    <button (click)="adivinarLetra()">Adivinar</button>
+    <button (click)="adivinarLetra()" style="
+    width: 20rem;
+    background: antiquewhite;
+">Adivinar</button>
   </div>
-
-  <!-- Mostrar el número de oportunidades restantes -->
+  <div>
+    <button (click)="generarAyuda()"style="
+    background-color: floralwhite;
+">Ayuda</button>
+  </div>
+ 
   <div class="attempts-left">
     Intentos restantes: {{ intentosRestantes }}
   </div>
 
-  <!-- Mostrar mensajes de victoria o derrota -->
+   
+ 
   <div class="game-message">
     <p *ngIf="">Ya has ingresado esta letra</p>
  
   
     <p *ngIf="juegoGanado">¡Has ganado!</p>
-    <p *ngIf="juegoTerminado">¡Has perdido! La palabra era "{{ palabraAdivinar }}"</p>
+    <p *ngIf="juegoTerminado">La palabra es "{{ palabraAdivinar }}"</p>
+    <p *ngIf="juegoPerdido">¡Has perdido!"</p>
   </div>
+ 
+  <button *ngIf="juegoTerminado" (click)="reiniciarJuego()">Jugar de nuevo</button>
 </div>

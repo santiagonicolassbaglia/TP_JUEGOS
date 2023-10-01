@@ -11,6 +11,7 @@ export class JuegoAhorcadoComponent implements OnInit {
   letrasAdivinadas: string[] = [];
   intentosRestantes: number = 6;
   juegoTerminado: boolean = false;
+  juegoPerdido: boolean = false;
   juegoGanado: boolean = false;
   letraInput: string = "";
 
@@ -49,6 +50,7 @@ export class JuegoAhorcadoComponent implements OnInit {
     } else {
       this.intentosRestantes--;
       if (this.intentosRestantes === 0) {
+        this.juegoPerdido = true;
         this.juegoTerminado = true;
       }
     }
@@ -71,7 +73,28 @@ export class JuegoAhorcadoComponent implements OnInit {
     this.intentosRestantes = 6;
     this.juegoTerminado = false;
     this.juegoGanado = false;
+    this.juegoPerdido = false;
     this.letrasAdivinadas = [];
     this.letraInput = "";
+  }
+ 
+  generarAyuda(): void {
+    const palabraOcultaStr = this.palabraOculta.join('');
+    const letrasNoAdivinadas = palabraOcultaStr.split('_');
+    const letrasRestantes = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(letra => !this.letrasAdivinadas.includes(letra));
+    const letrasDisponibles = letrasRestantes.filter(letra => !letrasNoAdivinadas.includes(letra));
+    
+    if (letrasDisponibles.length === 0) {
+      return;  
+    }
+  
+    const letrasEnPalabra = letrasDisponibles.filter(letra => this.palabraAdivinar.includes(letra));
+    
+    if (letrasEnPalabra.length === 0) {
+      return; 
+    }
+    
+    const letraAleatoria = letrasEnPalabra[Math.floor(Math.random() * letrasEnPalabra.length)];
+    this.letraInput = letraAleatoria; 
   }
 }
