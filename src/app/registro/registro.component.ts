@@ -18,9 +18,7 @@ export class RegistroComponent {
   constructor(private router: Router) { }
 
   registrar() {
-    // Aquí puedes usar las propiedades (nombre, email, password, etc.) para guardar los datos del usuario
-    // en el almacenamiento local o enviarlos al servidor, según tus necesidades.
-
+   
     // Guardar el nuevo usuario en localStorage
     const nuevoUsuario = {
       nombre: this.nombre,
@@ -31,11 +29,9 @@ export class RegistroComponent {
       foto: this.foto
     };
     localStorage.setItem('usuarioGuardado', JSON.stringify(nuevoUsuario));
-
-    // Marcar el registro como exitoso
+ 
     this.registroExitoso = true;
-
-    // Redirige al usuario a la pantalla de inicio de sesión después del registro
+ 
     this.router.navigate(['/login']);
   }
 }
