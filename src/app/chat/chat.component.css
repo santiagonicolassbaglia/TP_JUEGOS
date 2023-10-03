@@ -1,45 +1,101 @@
-.cardContainer{
-    width: 300px;
-    height: 500px;
+.chat-container {
     position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
-
-}
-
-.card-header{
+    bottom: 0;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .chat-toggle-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .chat-toggle-icon.chat-open {
+    transform: rotate(45deg);
+  }
+  
+  .chat-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  .chat-content.chat-open {
+    max-height: 300px; /* Ajusta la altura deseada */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+   
+  
+  .card-header {
     background-color: #037cac;
     color: white;
-    font-weight: 60rem;
- 
-}
-
-.card-body{
+    font-weight: bold;
+  }
+  
+  .card-body {
     padding: 0.5rem;
     background-image: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
-}
-
-.imgEnv:active{
+  }
+  
+  .imgEnv:active {
     transform: scale(0.9);
- 
-}
-.enviado{
+  }
+  
+  .enviado {
     display: block;
     float: right;
     min-width: 50.01%;
     background-color: #09a6db;
     border-radius: 10px;
     text-align: left;
-
-}
-
-.recibido{
+  }
+  
+  .recibido {
     display: block;
     float: left;
     background-color: #c7d9e0;
     border-radius: 10px;
     text-align: left;
     min-width: 50.01%;
-
-    
-}
+  }
+  
+  .cardContainer {
+    /* Estilos anteriores del contenedor del chat */
+    position: relative;
+  }
+  
+  .chat-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    text-align: right;
+  }
+  
+  .chat-buttons button {
+    margin-left: 10px;
+  }
+  
+  
+  /* Estilos para los botones */
+  .btn {
+    margin-left: 5px; /* Espacio entre los botones */
+  }

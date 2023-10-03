@@ -15,6 +15,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { JuegoAhorcadoComponent } from './juego-ahorcado/juego-ahorcado.component';
 import { ErrorComponent } from './error/error.component';
 import { ChatComponent } from './chat/chat.component';
+import { Chat2Component } from './chat2/chat2.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ChatComponent } from './chat/chat.component';
     JuegoAhorcadoComponent,
     ErrorComponent,
     ChatComponent,
+    Chat2Component,
   ],
   imports: [
     BrowserModule

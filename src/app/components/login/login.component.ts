@@ -29,6 +29,11 @@ export class LoginComponent {
     }
   }
 
+  // IngresarConGoogle() {
+
+    
+ 
+//  }
   registrarse() {
     this.router.navigate(['/registro']);
   }

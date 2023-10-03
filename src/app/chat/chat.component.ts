@@ -23,13 +23,24 @@ export class ChatComponent {
     texto: "Seee ojalaa ! "},
  
   ];
+  chatAbierto: boolean = true;
   usuarioLogueado:any;
 nuevoMensaje: string = "";
+ mostrarChat: boolean = false;
  
- 
-EnviarMensaje() {
-  console.log(this.nuevoMensaje);
+ EnviarMensaje() {
+  if (this.nuevoMensaje.trim() === "") {
+    return; // No envíes mensajes vacíos
+  }
+
+  this.mensajes.push({
+    emisor: "Tú", // Puedes cambiar esto al nombre de usuario actual
+    texto: this.nuevoMensaje
+  });
+
   this.nuevoMensaje = "";
 }
-
+toggleChat() {
+  this.chatAbierto = !this.chatAbierto;
+}
 }

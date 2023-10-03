@@ -1,25 +1,25 @@
-<div class="card text-center cardContainer">
-    <div class="card-header">
-CHAT
-    </div>
-    <div class="card-body">
-      
-<div>
-  <p *ngFor="let mensaje of mensajes" class="enviado p-2"> 
-  <!-- [ngClass]="(usuarioLogeado.uid==mensaje.emisor)?'enviado': 'recibido'"> -->
-{{mensaje.texto}}
-  </p>
+<!-- Botón para abrir el chat -->
+<button *ngIf="!chatAbierto" (click)="toggleChat()">Abrir Chat</button>
 
- 
+<div class="card text-center cardContainer" *ngIf="chatAbierto">
+  <div class="card-header">
+    CHAT
   </div>
-
+  <div class="card-body">
+    <div>
+      <p *ngFor="let mensaje of mensajes" class="enviado p-2">
+        {{ mensaje.texto }}   
+         <p *ngFor="let mensaje of mensajes" class="recibido p-2">
+          {{ mensaje.texto }}
+      </p>
     </div>
-    <form class="card-footer text-muted input-group" (ngSubmit)="EnviarMensaje()">
-       
-            <input type="text" class="form-control" placeholder="Ingrese su mensaje" [ngModel]="nuevoMensaje" [ngModelOptions]="{standalone:true}">
-            <div class="input-group-append" (click)="EnviarMensaje()">
-              <span class="input-group-text" id="basic-addon2"><img class="imgEnv" src="assets/image/Send.png"  alt="EnviarMensaje" style="width: 5rem;"></span>
-            </div>
-            
-    </form>
   </div>
+  <form class="card-footer text-muted input-group" (ngSubmit)="EnviarMensaje()">
+    <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje">
+    <div class="input-group-append" (click)="EnviarMensaje()">
+      <span class="input-group-text" id="basic-addon2"><img class="imgEnv" src="assets/image/Send.png" alt="EnviarMensaje" style="width: 5rem;"></span>
+    </div>
+  </form>
+  <!-- Botón para cerrar el chat -->
+  <button (click)="toggleChat()">Cerrar Chat</button>
+</div>

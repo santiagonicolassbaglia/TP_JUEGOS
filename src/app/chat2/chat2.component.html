@@ -1,0 +1,18 @@
+<div class="chat-container">
+    <div class="chat-header">
+     
+      <button class="chat-header" (click)="toggleChat()" style="width: -webkit-fill-available;">
+        {{ chatAbierto ? 'Cerrar Chat' : 'Abrir Chat' }}
+      </button>
+    </div>
+    <div class="chat-content" *ngIf="chatAbierto">
+      <div *ngFor="let message of messages" class="message">
+        {{ message.sender }}: {{ message.text }}
+      </div>
+    </div>
+    <div class="chat-input" *ngIf="chatAbierto">
+      <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Escribe un mensaje...">
+      <button (click)="sendMessage()">Enviar</button>
+    </div> 
+  </div>
+  
