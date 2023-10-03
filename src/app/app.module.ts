@@ -13,6 +13,8 @@ import { LaboivComponent } from './asgnaturas/laboiv/laboiv.component';
 import { Usuario } from '../app/clases/usuario';
 import { RegistroComponent } from './registro/registro.component';
 import { JuegoAhorcadoComponent } from './juego-ahorcado/juego-ahorcado.component';
+import { ErrorComponent } from './error/error.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { JuegoAhorcadoComponent } from './juego-ahorcado/juego-ahorcado.componen
     LaboivComponent,
     RegistroComponent,
     JuegoAhorcadoComponent,
+    ErrorComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule

@@ -1,0 +1,45 @@
+.cardContainer{
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+
+}
+
+.card-header{
+    background-color: #037cac;
+    color: white;
+    font-weight: 60rem;
+ 
+}
+
+.card-body{
+    padding: 0.5rem;
+    background-image: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
+}
+
+.imgEnv:active{
+    transform: scale(0.9);
+ 
+}
+.enviado{
+    display: block;
+    float: right;
+    min-width: 50.01%;
+    background-color: #09a6db;
+    border-radius: 10px;
+    text-align: left;
+
+}
+
+.recibido{
+    display: block;
+    float: left;
+    background-color: #c7d9e0;
+    border-radius: 10px;
+    text-align: left;
+    min-width: 50.01%;
+
+    
+}

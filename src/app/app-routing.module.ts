@@ -6,6 +6,8 @@ import{HomeComponent} from './components/home/home.component';
 import{PresentacionComponent} from './components/presentacion/presentacion.component';
 import{RegistroComponent} from './registro/registro.component';
 import {JuegoAhorcadoComponent} from './juego-ahorcado/juego-ahorcado.component';
+import {ErrorComponent} from './error/error.component';
+import {ChatComponent} from './chat/chat.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,10 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'juego-ahorcado', component: JuegoAhorcadoComponent},
+  { path: 'chat', component: ChatComponent},
+  { path: '**', component: ErrorComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+
 
   { path: 'asignaturas', loadChildren: () => import('./modulos/asignaturas/asignaturas.module').then(m => m.AsignaturasModule) },//para que cargue mas rapido
 
