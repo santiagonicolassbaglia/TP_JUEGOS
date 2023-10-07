@@ -16,7 +16,7 @@
     </div> 
   </div>
    -->
-   <div class="chat-container">
+   <div class="chat-container" >
     <div class="chat-header">
       <button class="chat-header" (click)="toggleChat()" style="width: -webkit-fill-available;">
         {{ chatAbierto ? 'Cerrar Chat' : 'Abrir Chat' }}
@@ -35,7 +35,7 @@
       <div *ngIf="esperandoRespuesta">
         <p>Selecciona una opción:</p>
         <ul>
-            <li *ngFor="let option of opciones" (click)="handleOptionResponse(option)">{{ option }}</li>
+          <li *ngFor="let option of opciones" (click)="handleOptionResponse(option)">{{ option }}</li>
         </ul>
       </div>
     </div>

@@ -11,21 +11,17 @@ export class ChatService {
   constructor() {}
 
   sendMessage(message: { sender: string; text: string }) {
-    // Envía el mensaje al servicio de chat
     this.messagesSubject.next(message);
   }
 
   simulateIncomingMessages() {
-    // Simula mensajes entrantes (respuestas automáticas)
-    const responseDelay = 1000; // Retraso en milisegundos
+    const responseDelay = 1000;
 
-    // Envía un mensaje de bienvenida
     this.sendMessage({
       sender: 'ChatBot',
       text: 'Hola, ¿en qué puedo ayudarte?',
     });
 
-    // Después de un retraso, envía las opciones
     timer(responseDelay).subscribe(() => {
       this.sendMessage({
         sender: 'ChatBot',

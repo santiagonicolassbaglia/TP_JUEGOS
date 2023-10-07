@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'Santiago Sbaglia';
   usuario: Usuario;
 
+  
+
   constructor() {
     this.usuario = Usuario.traerDeLocalStorage() || Usuario.CrearUsuarioVacio();
   }

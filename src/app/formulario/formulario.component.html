@@ -1,0 +1,40 @@
+
+
+<!-- 1. bindear los datos de nuestros validators -->
+<!-- 2. asignar una accion que ejecute el form una vez completado / boton de aceptar -->
+<form >
+  <input type="text" name="nombre" formControlName="nombre" />
+  <div *ngIf="form.controls['nombre'].errors != null">
+    <small
+      style="color: #f00"
+      *ngIf="
+        form.controls['nombre'].errors!['required'] &&
+        form.controls['nombre'].touched
+      "
+    >
+      El nombre es requerido
+    </small>
+
+    <small
+      style="color: #f00"
+      *ngIf="
+        form.controls['nombre'].errors!['minlength'] &&
+        form.controls['nombre'].touched
+      "
+    >
+      El nombre es muy corto, debe tener como mínimo
+      {{ form.controls["nombre"].errors!["minlength"].requiredLength }}
+    </small>
+    <small
+      style="color: #f00"
+      *ngIf="form.controls['nombre'].errors!['contieneEspacios']"
+    >
+      El nombre no puede contener espacios. Contiene
+      {{
+        form.controls["nombre"].errors!["contieneEspacios"].cantidadDeEspacios
+      }}
+    </small>
+  </div>
+  <button [disabled]="form.invalid">Registrarse</button>
+</form>
+<router-outlet></router-outlet>

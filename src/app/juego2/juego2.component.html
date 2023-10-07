@@ -1,0 +1,30 @@
+
+
+<div>
+    <h1>Juego 2</h1>
+ <p>Este es el juego n° 2:</p>
+
+    <button routerLink="/home" class="btn btn-primary">Volver al Home</button>
+
+</div>
+ 
+<img [src]="bandera" >
+
+<!-- <div *ngFor="let bandera of misBanderas ">
+
+    {{bandera.name.common}}
+
+
+</div> -->
+
+<div *ngFor="let bandera of misPaises | async ">
+
+    <input type="button" [value]="bandera.name.common"
+    (click)="buscarPais(bandera.name.common)"> 
+
+
+</div>
+
+
+<router-outlet></router-outlet>
+ 
