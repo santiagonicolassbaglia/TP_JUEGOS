@@ -15,6 +15,8 @@ export class JuegoAhorcadoComponent implements OnInit {
   juegoGanado: boolean = false;
   letraInput: string = "";
 
+  letrasDisponibles: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
   palabrasAhorcado: string[] = ["programacion", "javascript", "angular", "typescript", "desarrollo"];
 
   ngOnInit() {
@@ -28,21 +30,18 @@ export class JuegoAhorcadoComponent implements OnInit {
     for (let i = 0; i < this.palabraAdivinar.length; i++) {
       this.palabraOculta.push('_' + "  ");
     }
+    this.letrasAdivinadas = [];
   }
 
-  adivinarLetra() {
-    if (this.juegoTerminado) {
+  adivinarLetra(letra: string) {
+    if (this.juegoTerminado || this.letrasAdivinadas.includes(letra)) {
       return;
     }
-
-    if (this.letraInput.length !== 1 || !this.letraInput.match(/[a-zA-Z]/)) {
-      return;
-    }
-
-    const letra = this.letraInput.toLowerCase();
-
+  
     if (this.palabraAdivinar.includes(letra)) {
-      this.actualizarPalabraOculta(letra);
+      this.letrasAdivinadas.push(letra);
+      this.actualizarPalabraOculta();
+  
       if (this.palabraOculta.join('') === this.palabraAdivinar) {
         this.juegoGanado = true;
         this.juegoTerminado = true;
@@ -53,21 +52,21 @@ export class JuegoAhorcadoComponent implements OnInit {
         this.juegoPerdido = true;
         this.juegoTerminado = true;
       }
+      this.letrasAdivinadas.push(letra); // Agregar la letra a letrasAdivinadas
     }
-
-    this.letrasAdivinadas.push(letra);
-    this.letraInput = "";
   }
-
-  actualizarPalabraOculta(letra: string) {
-    letra = letra.toLowerCase();
+  actualizarPalabraOculta() {
+    this.palabraOculta = [];
+  
     for (let i = 0; i < this.palabraAdivinar.length; i++) {
-      if (this.palabraAdivinar[i].toLowerCase() === letra) {
-        this.palabraOculta[i] = letra;
+      const letra = this.palabraAdivinar[i];
+      if (this.letrasAdivinadas.includes(letra)) {
+        this.palabraOculta.push(letra);
+      } else {
+        this.palabraOculta.push('_' + "  ");
       }
     }
   }
-
   reiniciarJuego() {
     this.iniciarJuego();
     this.intentosRestantes = 6;
@@ -79,22 +78,26 @@ export class JuegoAhorcadoComponent implements OnInit {
   }
  
   generarAyuda(): void {
-    const palabraOcultaStr = this.palabraOculta.join('');
-    const letrasNoAdivinadas = palabraOcultaStr.split('_');
-    const letrasRestantes = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(letra => !this.letrasAdivinadas.includes(letra));
-    const letrasDisponibles = letrasRestantes.filter(letra => !letrasNoAdivinadas.includes(letra));
-    
-    if (letrasDisponibles.length === 0) {
-      return;  
+    if (this.juegoTerminado) {
+      return;
     }
   
-    const letrasEnPalabra = letrasDisponibles.filter(letra => this.palabraAdivinar.includes(letra));
+    const palabraOcultaStr = this.palabraOculta.join('');
+    const letrasNoAdivinadas = palabraOcultaStr.split('_').filter(letra => letra !== ' ');
+    const letrasRestantes = this.letrasDisponibles.filter(letra => !this.letrasAdivinadas.includes(letra) && !letrasNoAdivinadas.includes(letra));
     
-    if (letrasEnPalabra.length === 0) {
-      return; 
+    if (letrasRestantes.length === 0) {
+      return;
     }
+  
+    // Aquí seleccionamos una letra de la palabra a adivinar
+    const palabraRestante = this.palabraAdivinar.split('').filter(letra => !this.letrasAdivinadas.includes(letra));
     
-    const letraAleatoria = letrasEnPalabra[Math.floor(Math.random() * letrasEnPalabra.length)];
-    this.letraInput = letraAleatoria; 
+    if (palabraRestante.length === 0) {
+      return;
+    }
+  
+    const letraAyuda = palabraRestante[Math.floor(Math.random() * palabraRestante.length)];
+    this.adivinarLetra(letraAyuda);
   }
 }

@@ -9,25 +9,14 @@
   </div>
  
   <div class="guess-input">
-    <label for="letterInput" style="margin-right: 2rem; ">Ingresa una letra: </label>
-    <input
-      type="text"
-      maxlength="1"
-      id="letterInput"
-      [(ngModel)]="letraInput"
-      (keydown.enter)="adivinarLetra()"
-    />
-    <br>
-    <br><br>
-    <button (click)="adivinarLetra()" style="
-    width: 20rem;
-    background: antiquewhite;
-">Adivinar</button>
+    <label for="letterInput" style="margin-right: 2rem;">Selecciona una letra: </label>
+    <div class="letter-buttons">
+      <button *ngFor="let letra of letrasDisponibles" (click)="adivinarLetra(letra)" [disabled]="letrasAdivinadas.includes(letra) || juegoTerminado" class="letter-button">{{ letra }}</button>
+    </div>
   </div>
   <div>
-    <button (click)="generarAyuda()"style="
-    background-color: floralwhite;
-">Ayuda</button>
+    <button (click)="generarAyuda()" style="background-color: floralwhite;">Ayuda</button>
+
   </div>
  
   <div class="attempts-left">

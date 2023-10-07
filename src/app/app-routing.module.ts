@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent},
   { path: 'juego-ahorcado', component: JuegoAhorcadoComponent},
   { path: 'chat', component: ChatComponent},
+
+  
   
   { path: 'chat2', component: Chat2Component},
   { path: '**', component: ErrorComponent},
