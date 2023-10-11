@@ -30,7 +30,7 @@
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
                     <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30"
                         class="d-inline-block align-top" alt="">
-                    {{user.email}}
+                    {{user.displayName?user.displayName:user.email }}
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button ngbDropdownItem routerLink="/panelDeControl">Panel de control</button>

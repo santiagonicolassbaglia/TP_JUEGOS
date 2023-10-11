@@ -1,25 +1,30 @@
-<!-- Botón para abrir el chat -->
-<button *ngIf="!chatAbierto" (click)="toggleChat()">Abrir Chat</button>
+<div *ngIf="usuarioLogeado && !mostrarChat " class="chatIconContainer">
+  <img class="chatIcon" src="https://static.vecteezy.com/system/resources/previews/015/124/614/original/game-chat-modern-gradient-icon-png.png" alt="Logo" (click)="mostrarChat=true">
+  
+</div>
 
-<div class="card text-center cardContainer" *ngIf="chatAbierto">
+<div class="card text-center cardContainer" *ngIf="usuarioLogeado && mostrarChat">
+  
   <div class="card-header">
-    CHAT
+   Chat
+   <div class="closeIcon"(click)="mostrarChat=false">X</div>
   </div>
+  
   <div class="card-body">
-    <div>
-      <p *ngFor="let mensaje of mensajes" class="enviado p-2">
-        {{ mensaje.texto }}   
-         <p *ngFor="let mensaje of mensajes" class="recibido p-2">
-          {{ mensaje.texto }}
-      </p>
-    </div>
+<div id="contenedorDeMensajes" class="contenedorDeMensajes h-100">
+  <p *ngFor=" let mensaje of mensajes" class="msj p-2" [ngClass]="(usuarioLogeado.uid==mensaje.emisor)?'enviado' : 'recibido'">
+    {{mensaje.texto}} 
+  </p>
+</div>
   </div>
   <form class="card-footer text-muted input-group" (ngSubmit)="EnviarMensaje()">
-    <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje">
-    <div class="input-group-append" (click)="EnviarMensaje()">
-      <span class="input-group-text" id="basic-addon2"><img class="imgEnv" src="assets/image/Send.png" alt="EnviarMensaje" style="width: 5rem;"></span>
-    </div>
+   
+      <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}" >
+      <div class="input-group-append" (click)="EnviarMensaje()">
+        <span class="input-group-text" id="basic-addon2"> 
+          <img class="imgEnviar" src="https://cdn-icons-png.flaticon.com/512/4727/4727149.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        </span>
+      </div>
+  
   </form>
-  <!-- Botón para cerrar el chat -->
-  <button (click)="toggleChat()">Cerrar Chat</button>
 </div>

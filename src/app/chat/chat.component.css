@@ -1,101 +1,103 @@
-.chat-container {
-    position: fixed;
-    bottom: 0;
-    right: 20px;
+.cardContainer {
+    
     width: 300px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    transition: height 0.3s ease-in-out;
+   height: 500px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    border-radius: 10px;
     overflow: hidden;
-    z-index: 1000;
+     
   }
   
-  .chat-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
+ 
+  
+  .card-header{
+     background-color: rgba(23, 27, 252, 0.662);
+     color: white;
+     font-weight: 700;
   }
-  
-  .chat-toggle-icon {
-    font-size: 20px;
-    margin-right: 10px;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .chat-toggle-icon.chat-open {
-    transform: rotate(45deg);
-  }
-  
-  .chat-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-  }
-  
-  .chat-content.chat-open {
-    max-height: 300px; /* Ajusta la altura deseada */
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-   
-  
-  .card-header {
-    background-color: #037cac;
-    color: white;
-    font-weight: bold;
-  }
-  
+
   .card-body {
     padding: 0.5rem;
     background-image: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
   }
   
-  .imgEnv:active {
-    transform: scale(0.9);
-  }
-  
-  .enviado {
-    display: block;
-    float: right;
-    min-width: 50.01%;
-    background-color: #09a6db;
-    border-radius: 10px;
-    text-align: left;
-  }
-  
-  .recibido {
-    display: block;
-    float: left;
-    background-color: #c7d9e0;
-    border-radius: 10px;
-    text-align: left;
-    min-width: 50.01%;
-  }
-  
-  .cardContainer {
-    /* Estilos anteriores del contenedor del chat */
-    position: relative;
-  }
-  
-  .chat-buttons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1001;
-    text-align: right;
-  }
-  
-  .chat-buttons button {
-    margin-left: 10px;
-  }
-  
-  
-  /* Estilos para los botones */
-  .btn {
-    margin-left: 5px; /* Espacio entre los botones */
-  }
+.imgEnviar:active
+{
+  transform: scale(0.8); 
+} 
+
+.enviado{
+  display: block;
+  float: right;
+  background-color: #3d910c;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left ;
+}
+
+.recibido{
+  display: block;
+  float: left;
+  background-color: #0c6b91;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left ;
+}
+
+
+.contenedorDeMensajes{
+  overflow:scroll;
+  padding: 0.3rem;
+}
+
+.contenedorDeMensajes::-webkit-scrollbar  {
+  display: none;
+}
+
+.chatIconContainer{ 
+   right: 0.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border-radius: 100%;
+  box-shadow: 0 0 15px 10px rgba(17, 11, 11, 0.5);
+
+
+}
+
+
+.chatIcon{
+  width: 50px;
+  height: 50px;
+}
+
+.closeIcon{
+ position:absolute;
+  right: 0.5rem;
+  top: 0rem;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
+
+:root {
+  --color-primary: rgba(23, 27, 252, 0.662);
+  --color-background: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
+  --color-text: white;
+}
+
+:root {
+  --color-primary: rgba(23, 27, 252, 0.662);
+  --color-background: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
+  --color-text: white;
+}

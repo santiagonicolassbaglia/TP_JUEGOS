@@ -1,46 +1,67 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {
-  mensajes: any = [{
-    emisor :"id",
-    texto: "hola, como estas?"},
-
-    {emisor :"id",
-    texto: "Todo bien, vos?"},
-
-    {emisor :"id",
-    texto: "Todo bien, haciendo el tp de lavo IV?"},
-
-    {emisor :"id",
-    texto: "ahh buenisimo, ojala te aprueben "},
-
-    {emisor :"id",
-    texto: "Seee ojalaa ! "},
+export class ChatComponent implements  OnInit {
+  mostrarChat=false;
+  nuevoMensaje: string = "";
+  usuarioLogeado:any;
+  mensajes:any= [
+{
+  emisor:"MBuFrTlSJcTyeRrQvD7spJhw46t2",
+  texto:"hola"
+},
+{
+  emisor:"id",
+  texto:"como estas?"
+},
+{
+  emisor:"MBuFrTlSJcTyeRrQvD7spJhw46t2",
+  texto:"bien y vos?"
+},
+{
+  emisor:"id",
+  texto:"bien"
+},
+ ];
+  constructor(private authServis:AuthService) { }
  
-  ];
-  chatAbierto: boolean = true;
-  usuarioLogueado:any;
-nuevoMensaje: string = "";
- mostrarChat: boolean = false;
- 
+   ngOnInit(): void {
+    this.authServis.getUserLogged().subscribe(usuario=>{
+      this.usuarioLogeado=usuario;
+    });
+   }
+   
+  
  EnviarMensaje() {
-  if (this.nuevoMensaje.trim() === "") {
-    return; // No envíes mensajes vacíos
+  if( this.nuevoMensaje==""){
+    return;
   }
+  console.log(this.nuevoMensaje);
+let mensaje={
+  emisor:this.usuarioLogeado.uid,
+  texto:this.nuevoMensaje
+  }
+this.mensajes.push(mensaje);
+this.nuevoMensaje="";
 
-  this.mensajes.push({
-    emisor: "Tú", // Puedes cambiar esto al nombre de usuario actual
-    texto: this.nuevoMensaje
-  });
+setTimeout(() =>{
+  this.scrollToTheLastElemtByClassName();
+},20);
 
-  this.nuevoMensaje = "";
+ 
 }
-toggleChat() {
-  this.chatAbierto = !this.chatAbierto;
+
+scrollToTheLastElemtByClassName() {
+  const chatContainer = document.getElementById('chat-container'); // Reemplaza 'chat-container' con el ID real de tu contenedor de chat
+  if (chatContainer) {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
 }
+
 }
