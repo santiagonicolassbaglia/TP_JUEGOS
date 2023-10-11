@@ -56,3 +56,20 @@ body {
   background: #000;
   animation: animate 20s linear infinite reverse;
 }
+.bg-light {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.bg-light:hover {
+  transform: scale(1.05);
+}
+.bg-light {
+  background-color: #ffcc00;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  transition: all 0.3s ease;
+}

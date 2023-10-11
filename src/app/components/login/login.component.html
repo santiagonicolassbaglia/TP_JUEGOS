@@ -1,3 +1,4 @@
+ 
 <main class="form-signin">
     
     <form>
@@ -8,11 +9,11 @@
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput"  [(ngModel)]="mail"  placeholder="name@example.com" name = "mail" >
+        <input type="email" class="form-control" id="floatingInput"  [(ngModel)]="mail"  placeholder="Ingrese su email" name = "mail" >
         <label for="floatingInput">Email address</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password" name = "password">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Ingrese su Contraseña" [(ngModel)]="password" name = "password">
         <label for="floatingPassword">Password</label>
       </div>
       <div>
@@ -25,7 +26,12 @@
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" (click)="iniciarSesion()">Sign in</button>
-<button class="w-100 btn btn-lg btn-success" (click)="registrarse()">Registrarse</button>
+      <button class="w-100 btn btn-danger  btn-success Google" (click)="IngresarConGoogle()">Registrarse con Google </button>
+      si no tiene usuario 
+     <a routerLink="/registro"> Registrarse</a>  
+    
+     
+<!-- <button class="w-100 btn btn-lg btn-success" (click)="registrarse()">Registrarse</button> -->
       <p class="mt-5 mb-3 text-muted">&copy; santiago sbaglia</p>
     
       <div class="alert alert-danger" *ngIf="errorMensaje">
