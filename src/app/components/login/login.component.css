@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  
+
   display: flex;
   align-items: center;
   padding-top: 40px;
@@ -14,7 +14,7 @@ body {
 }
 
 .form-signin {
-  
+
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -27,18 +27,40 @@ body {
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
+
+
 }
 
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+
+
 }
 
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
 
+
+
+}
  
+.fondo {
+  background-image: url('../../../assets/image/utnGames1.jpg');
+  /* background-size: cover; */
+  /* background-position: center; */
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar la legibilidad */
+  color: #000000; /* Cambiado a blanco para mayor contraste */
+  font-size: 1.2rem;
+  font-style: italic;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agregar sombra al texto */
+}
