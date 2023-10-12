@@ -48,10 +48,11 @@
   text-align: left ;
 }
 
-
-.contenedorDeMensajes{
-  overflow:scroll;
+.contenedorDeMensajes {
+  overflow-y: auto;
+  max-height: 300px;
   padding: 0.3rem;
+  margin-bottom: 10px; /* Ajusta este valor según tus necesidades */
 }
 
 .contenedorDeMensajes::-webkit-scrollbar  {
@@ -96,8 +97,6 @@
   --color-text: white;
 }
 
-:root {
-  --color-primary: rgba(23, 27, 252, 0.662);
-  --color-background: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
-  --color-text: white;
+.card-footer {
+  margin: 0.3rem 0; /* Ajusta este valor según tus necesidades */
 }
