@@ -20,7 +20,7 @@ export class LoginComponent {
   password: string = "";
  
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private fb: FormBuilder,private router: Router) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -77,6 +77,7 @@ iniciarSesion() {
     const { email, password } = this.form.value;
     this.authService.login(email, password).then(res => {
       console.log('Inicio de sesión exitoso', res);
+      this.router.navigate(['/home']);
       this.errorMensaje = '';
     }).catch(error => {
       console.log('Error al iniciar sesión', error);
@@ -94,6 +95,7 @@ IngresarConGoogle(){
   this.authService.loginGoogle(email, password).then(res =>{
     console.log("se registro", res);
     this.errorMensaje = "";
+    this.router.navigate(['/home']);
   }).catch(error =>{
     console.log("error", error);
     this.errorMensaje = error.message;

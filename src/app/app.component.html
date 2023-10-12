@@ -1,30 +1,30 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row ">
       <div class="col-2">
-        <a class="navbar-brand" href="#">
-          <img src="https://cdn-icons-png.flaticon.com/512/4727/4727149.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+        <a class="navbar-brand " href="#">
+          <img src="https://cdn-icons-png.flaticon.com/512/4727/4727149.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top ">
           <h4>TP Juegos</h4>
 
-          <div ngbDropdown class="d-inline-block" *ngIf="userLogged | async as user; else LoginButton">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+          <div ngbDropdown class="d-inline-block "  *ngIf="userLogged | async as user; else LoginButton">
+            <button class="btn  " id="dropdownBasic1" ngbDropdownToggle>
               <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{ user.photoURL }}" width="30" height="30" class="d-inline-block align-top" alt="">
               {{ user.displayName ? user.displayName : user.email }}
             </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem routerLink="/login" (click)="logOut()">Salir</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+              <button  class="col"  ngbDropdownItem routerLink="/login" (click)="logOut()">Salir</button>
             </div>
           </div>
 
           <ng-template #LoginButton>
-            <button class="btn btn-primary" routerLink="/login" routerLinkActive="active">Ingresar</button>
+            <!-- <button class="btn btn-primary" routerLink="/login" routerLinkActive="active">Ingresar</button> -->
           </ng-template>
         </a>
       </div>
       <div class="col">
-        <button routerLink="/login" routerLinkActive="active">Login</button>
+        <!-- <button routerLink="/login" routerLinkActive="active">Login</button>
         <button routerLink="presentacion">Presentación</button>
-        <button routerLink="home" routerLinkActive="active">Home</button>
+        <button routerLink="home" routerLinkActive="active">Home</button> -->
       </div>
     </div>
   </div>

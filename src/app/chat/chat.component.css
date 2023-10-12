@@ -1,102 +1,75 @@
-.cardContainer {
-    
-    width: 300px;
-   height: 500px;
-    position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    border-radius: 10px;
-    overflow: hidden;
-     
-  }
-  
- 
-  
-  .card-header{
-     background-color: rgba(23, 27, 252, 0.662);
-     color: white;
-     font-weight: 700;
-  }
-
-  .card-body {
-    padding: 0.5rem;
-    background-image: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
-  }
-  
-.imgEnviar:active
-{
-  transform: scale(0.8); 
-} 
-
-.enviado{
-  display: block;
-  float: right;
-  background-color: #3d910c;
-  color: white;
-  min-width: 50.01%;
-  border-radius: 10px;
-  text-align: left ;
+h1 {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.recibido{
-  display: block;
-  float: left;
-  background-color: #0c6b91;
-  color: white;
-  min-width: 50.01%;
-  border-radius: 10px;
-  text-align: left ;
+h4 {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.contenedorDeMensajes {
-  overflow-y: auto;
-  max-height: 300px;
-  padding: 0.3rem;
-  margin-bottom: 10px; /* Ajusta este valor según tus necesidades */
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
-.contenedorDeMensajes::-webkit-scrollbar  {
-  display: none;
+.navbar {
+  transition: all 0.3s ease;
+  border-radius: 0;
 }
 
-.chatIconContainer{ 
-   right: 0.5rem;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
+.navbar .container {
+  padding: 5px 0;
+}
+
+.navbar .row {
   align-items: center;
+}
+
+.navbar-brand img {
   width: 60px;
   height: 60px;
-  cursor: pointer;
-  background-color: rgb(0, 0, 0);
-  border-radius: 100%;
-  box-shadow: 0 0 15px 10px rgba(17, 11, 11, 0.5);
-
-
+  margin-right: 10px;
 }
 
-
-.chatIcon{
-  width: 50px;
-  height: 50px;
+.navbar-brand h4 {
+  font-size: 24px;
+  margin: 0;
 }
 
-.closeIcon{
- position:absolute;
-  right: 0.5rem;
-  top: 0rem;
+.navbar .btn {
+  font-size: 16px;
+}
+
+.navbar .btn-outline-light {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.bg-light {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  cursor: pointer;
-
+  transition: all 0.3s ease;
 }
 
-:root {
-  --color-primary: rgba(23, 27, 252, 0.662);
-  --color-background: url("https://descubrecomohacerlo.com/wp-content/uploads/2020/12/fondo-predeterminado-whatsapp.jpg");
-  --color-text: white;
+.bg-light:hover {
+  transform: scale(1.05);
 }
-
-.card-footer {
-  margin: 0.3rem 0; /* Ajusta este valor según tus necesidades */
+.bg-light {
+  background-color: #ffcc00;
+  font-family: 'Roboto', sans-serif;
 }
