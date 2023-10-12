@@ -56,3 +56,21 @@
   button:active {
     transform: translateY(1px);
   }
+
+ 
+.mensaje-ganaste {
+    font-size: 24px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+ 
+  .mensaje-perdiste {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }
