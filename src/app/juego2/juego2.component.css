@@ -1,0 +1,58 @@
+.juego2-container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .cartas {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .carta-anterior, .carta-actual {
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 20px;
+  }
+  
+  .resultado, .puntaje, .intentos {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .opciones button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:active {
+    transform: translateY(1px);
+  }

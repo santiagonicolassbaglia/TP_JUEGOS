@@ -1,30 +1,41 @@
-
-
-<div>
-    <h1>Juego 2</h1>
- <p>Este es el juego n° 2:</p>
-
-    <button routerLink="/home" class="btn btn-primary">Volver al Home</button>
-
-</div>
+<div class="juego2-container">
+    <h1>Juego Mayor o Menor</h1>
+    
+    <div class="cartas">
+      <div class="carta-anterior">
+        <p>Carta Anterior: {{ cartaAnterior }}</p>
+      </div>
+      <div class="carta-actual">
+        <p>Carta Actual: {{ cartaActual }}</p>
+      </div>
+    </div>
+    
+    <div class="resultado">
+      <p>Resultado: {{ resultado }}</p>
+    </div>
+    
+    <div class="puntaje">
+      <p>Puntaje: {{ puntaje }}</p>
+    </div>
+    
+    <div class="intentos">
+      <p>Intentos Restantes: {{ intentosRestantes }}</p>
+    </div>
+    
+    <div class="opciones">
+      <button (click)="verificarResultado('mayor')">Mayor</button>
+      <button (click)="verificarResultado('menor')">Menor</button>
+    </div>
+    <div class="juego2-container">
  
-<img [src]="bandera" >
-
-<!-- <div *ngFor="let bandera of misBanderas ">
-
-    {{bandera.name.common}}
-
-
-</div> -->
-
-<div *ngFor="let bandera of misPaises | async ">
-
-    <input type="button" [value]="bandera.name.common"
-    (click)="buscarPais(bandera.name.common)"> 
-
-
-</div>
-
-
-<router-outlet></router-outlet>
- 
+        <div *ngIf="juegoGanado" class="mensaje-ganaste">
+          ¡Ganaste el juego!
+        </div>
+        
+        <div *ngIf="juegoPerdido" class="mensaje-perdiste">
+          ¡Perdiste el juego!
+        </div>
+      </div>
+    <button (click)="iniciarJuego()">Reiniciar Juego</button>
+  </div>
+  
