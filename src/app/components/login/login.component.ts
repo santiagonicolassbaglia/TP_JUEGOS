@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +13,19 @@ export class LoginComponent {
     email: '',
     password: ''
   }
- 
+  form: FormGroup;
+  errorMensaje: string = '';
+
   mail: string = "";
   password: string = "";
-  errorMensaje: string = "";
+ 
 
-constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private fb: FormBuilder) {
+    this.form = fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+  }
 
   //constructor(private router: Router) { }
   
@@ -65,17 +72,21 @@ constructor(private authService: AuthService) { }
 //   }catch(error){ return null; }
 
 
-iniciarSesion(){
-  console.log(this.usuario);
-  const {email, password} = this.usuario;
-  this.authService.login(email, password).then(res =>{
-    console.log("se registro", res);
-    this.errorMensaje = "";
-  }).catch(error =>{
-    console.log("error", error);
-    this.errorMensaje = error.message;
-  })
+iniciarSesion() {
+  if (this.form.valid) {
+    const { email, password } = this.form.value;
+    this.authService.login(email, password).then(res => {
+      console.log('Inicio de sesión exitoso', res);
+      this.errorMensaje = '';
+    }).catch(error => {
+      console.log('Error al iniciar sesión', error);
+      this.errorMensaje = error.message;
+    });
+  } else {
+    this.errorMensaje = 'Por favor, verifica los campos del formulario.';
+  }
 }
+ 
 
 IngresarConGoogle(){
   console.log(this.usuario);

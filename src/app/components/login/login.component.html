@@ -1,43 +1,50 @@
- 
-<main class="form-signin"  >
-    
-    <form>
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-      </svg>
-      <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
+<main class="form-signin">
+  <form [formGroup]="form" (ngSubmit)="iniciarSesion()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </svg>
+    <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
 
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput"  [(ngModel)]="mail"  placeholder="Ingrese su email" name = "mail" >
-        <label for="floatingInput">Email</label>
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="Ingrese su email">
+      <label for="floatingInput">Email</label>
+      <div *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched" style="color: #f00">
+        El email es requerido.
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Ingrese su Contraseña" [(ngModel)]="password" name = "password">
-        <label for="floatingPassword">Password</label>
+      <div *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched" style="color: #f00">
+        El email no es válido.
       </div>
-      <div>
-        <!-- <button class="w-100 btn btn-lg btn-danger" (click)="signInWithGoogle()">Sign in with Google</button> -->
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Ingrese su Contraseña">
+      <label for= "floatingPassword">Password</label>
+      <div *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched" style="color: #f00">
+        La contraseña es requerida.
       </div>
-  
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recordar
-        </label>
+      <div *ngIf="form.get('password')?.hasError('minlength') && form.get('password')?.touched" style="color: #f00">
+        La contraseña debe tener al menos 8 caracteres.
       </div>
-      <button class="w-100 btn btn-lg btn-primary" (click)="iniciarSesion()">Ingresar</button>
-      
-      si no tiene usuario 
-     <a routerLink="/registro"> Registrarse</a>  
-     
-     <button class="w-100 btn btn-danger  btn-success Google" (click)="IngresarConGoogle()">Registrarse con Google </button>
-     
-<!-- <button class="w-100 btn btn-lg btn-success" (click)="registrarse()">Registrarse</button> -->
-      <p class="mt-5 mb-3 text-muted">&copy; santiago sbaglia</p>
+    </div>
     
-      <div class="alert alert-danger" *ngIf="errorMensaje">
-        {{ errorMensaje }}
-      </div>
-    </form>
-  </main>
-  <router-outlet></router-outlet>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Recordar
+      </label>
+    </div>
+    
+    <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="form.invalid">Ingresar</button>
+
+    <p class="mt-3">Si no tienes una cuenta:</p>
+    <a class="w-100 btn btn-lg btn-danger" routerLink="/registro">Registrarse</a>
+
+    <p class="mt-3">O puedes registrarte con Google:</p>
+    <button class="w-100 btn btn-lg btn-success Google" (click)="IngresarConGoogle()">Registrarse con Google</button>
+
+    <p class="mt-5 mb-3 text-muted">&copy; Santiago Sbaglia</p>
+    
+    <div class="alert alert-danger" *ngIf="errorMensaje">
+      {{ errorMensaje }}
+    </div>
+  </form>
+</main>

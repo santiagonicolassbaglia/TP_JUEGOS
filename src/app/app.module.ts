@@ -19,6 +19,9 @@ import { Juego2Service } from './juego2.service';
 import{AngularFireModule} from '@angular/fire/compat';
 import { FormularioComponent } from './formulario/formulario.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+ 
+ 
+ 
 
 const firebaseConfig = {
   apiKey: "AIzaSyBx91B2SypFXjj8WytxpUH_9QVuPk6ned0",
@@ -43,16 +46,21 @@ const firebaseConfig = {
     Juego2Component,
     FormularioComponent,
     NavbarComponent,
+    
+ 
+ 
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     AngularFireModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
  
   ],
-  providers: [ChatService, Juego2Service], // Combina los dos providers en uno solo
+  providers: [ChatService, Juego2Service ], // Combina los dos providers en uno solo
   bootstrap: [AppComponent],
 })
 export class AppModule {}

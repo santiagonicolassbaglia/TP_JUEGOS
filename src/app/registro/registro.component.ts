@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -7,31 +8,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
-  nombre: string = "";
-  email: string = "";
-  password: string = "";
-  tipo: string = "1";
-  sexo: string = "1";
-  foto: string = "";
+  form: FormGroup;
   registroExitoso: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fb: FormBuilder) {
+    this.form = fb.group({
+      nombre: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      tipo: new FormControl('1', Validators.required),
+      sexo: new FormControl('1', Validators.required),
+      foto: new FormControl('')
+    });
+  }
 
   registrar() {
-   
-    // Guardar el nuevo usuario en localStorage
-    const nuevoUsuario = {
-      nombre: this.nombre,
-      email: this.email,
-      password: this.password,
-      tipo: this.tipo,
-      sexo: this.sexo,
-      foto: this.foto
-    };
-    localStorage.setItem('usuarioGuardado', JSON.stringify(nuevoUsuario));
- 
-    this.registroExitoso = true;
- 
-    this.router.navigate(['/login']);
+    if (this.form.valid) {
+      // Procede con el registro
+      this.registroExitoso = true;
+      this.router.navigate(['/login']);
+    } else {
+      // Mostrar errores en el formulario
+      this.form.markAllAsTouched();
+    }
   }
 }
