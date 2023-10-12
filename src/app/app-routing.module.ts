@@ -14,26 +14,19 @@ import { FormularioComponent } from './formulario/formulario.component';
 
 
 const routes: Routes = [ 
-  {path: 'home', component: HomeComponent},
-  {path: 'presentacion', component: PresentacionComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: 'home', component: HomeComponent },
+  { path: 'presentacion', component: PresentacionComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'formulario', component: FormularioComponent},
-  { path: 'juego2', component: Juego2Component},  
-  { path: 'registro', component: RegistroComponent},
-  { path: 'juego-ahorcado', component: JuegoAhorcadoComponent},
-  { path: 'chat', component: ChatComponent},
-
-  
-  
-  { path: 'chat2', component: Chat2Component},
-  { path: '**', component: ErrorComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-
-
-  { path: 'asignaturas', loadChildren: () => import('./modulos/asignaturas/asignaturas.module').then(m => m.AsignaturasModule) },//para que cargue mas rapido
-
- ];
-
+  { path: 'formulario', component: FormularioComponent },
+  { path: 'juego2', component: Juego2Component },  
+  { path: 'registro', component: RegistroComponent },
+  { path: 'juego-ahorcado', component: JuegoAhorcadoComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'chat2', component: Chat2Component },
+  { path: '**', component: ErrorComponent },
+  { path: 'asignaturas', loadChildren: () => import('./modulos/asignaturas/asignaturas.module').then(m => m.AsignaturasModule) },
+];
 
  
 @NgModule({
@@ -41,4 +34,5 @@ const routes: Routes = [
   exports: [RouterModule],
   
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {}4
+
