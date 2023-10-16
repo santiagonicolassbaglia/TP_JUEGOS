@@ -18,11 +18,22 @@ import { Juego2Component } from './juego2/juego2.component';
 import { Juego2Service } from './juego2.service';
 import{AngularFireModule} from '@angular/fire/compat';
 import { FormularioComponent } from './formulario/formulario.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component'; 
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { FIREBASE_OPTIONS } from  '@angular/fire/compat';
  
  
- 
-
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "tu-api-key",
+    authDomain: "tu-auth-domain",
+    projectId: "tu-project-id",
+    storageBucket: "tu-storage-bucket",
+    messagingSenderId: "tu-messaging-sender-id",
+    appId: "tu-app-id"
+  }
+};
 const firebaseConfig = {
   apiKey: "AIzaSyBx91B2SypFXjj8WytxpUH_9QVuPk6ned0",
   authDomain: "tpjuegos-43244.firebaseapp.com",
@@ -46,7 +57,7 @@ const firebaseConfig = {
     Juego2Component,
     FormularioComponent,
     NavbarComponent,
-    
+
  
  
     
@@ -54,13 +65,16 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    AngularFireModule,
     ReactiveFormsModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
- 
+    AngularFirestoreModule,
   ],
-  providers: [ChatService, Juego2Service ], // Combina los dos providers en uno solo
+  providers: [
+    ChatService,
+    Juego2Service,
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

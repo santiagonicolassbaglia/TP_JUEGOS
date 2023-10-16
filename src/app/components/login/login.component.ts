@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,14 +19,22 @@ export class LoginComponent {
   mail: string = "";
   password: string = "";
  
-
-  constructor(private authService: AuthService, private fb: FormBuilder,private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private angularFirestore: AngularFirestore
+  ) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
-    });
-  }
+      password: ['', [Validators.required, Validators.minLength(8)],
+      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')],
 
+    });
+    this.mail = "";
+    this.password = "";
+    this.errorMensaje = "";
+  }
   //constructor(private router: Router) { }
   
 
@@ -72,22 +80,33 @@ export class LoginComponent {
 //   }catch(error){ return null; }
 
 
-iniciarSesion() {
+async iniciarSesion() {
   if (this.form.valid) {
     const { email, password } = this.form.value;
-    this.authService.login(email, password).then(res => {
-      console.log('Inicio de sesión exitoso', res);
-      this.router.navigate(['/home']);
-      this.errorMensaje = '';
-    }).catch(error => {
-      console.log('Error al iniciar sesión', error);
-      this.errorMensaje = error.message;
-    });
+
+    // Verificar si el usuario existe en Firestore antes de permitir el inicio de sesión
+    const usuarioExiste = await this.authService.verificarUsuarioEnFirestore(email);
+
+    if (usuarioExiste) {
+      // El usuario existe en Firestore, intenta iniciar sesión
+      const resultadoLogin = await this.authService.login(email, password);
+
+      if (resultadoLogin) {
+        console.log('Inicio de sesión exitoso', resultadoLogin);
+        this.router.navigate(['/home']);
+        this.errorMensaje = '';
+      } else {
+        console.log('Error al iniciar sesión.');
+        this.errorMensaje = 'Error al iniciar sesión.';
+      }
+    } else {
+      console.log('Usuario no encontrado en Firestore. Regístrate primero.');
+      this.errorMensaje = 'Usuario no encontrado en Firestore. Regístrate primero.';
+    }
   } else {
     this.errorMensaje = 'Por favor, verifica los campos del formulario.';
   }
 }
- 
 
 IngresarConGoogle(){
   console.log(this.usuario);
