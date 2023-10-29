@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, Renderer2, Inject   } from '@angular/core';
 import { Usuario } from './clases/usuario';
 import { AuthService } from './services/auth.service';
 @Component({
@@ -16,9 +16,14 @@ export class AppComponent implements OnInit {
   
 
  
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private renderer: Renderer2) {
     this.usuario = Usuario.traerDeLocalStorage() || Usuario.CrearUsuarioVacio();
-   }
+    const link = this.renderer.createElement('link');
+    this.renderer.setAttribute(link, 'rel', 'icon');
+    this.renderer.setAttribute(link, 'type', 'image/x-icon');
+    this.renderer.setAttribute(link, 'href', 'assets/img/favicon.ico');
+    this.renderer.appendChild(document.head, link);
+  }
 
   ngOnInit(): void {
   }

@@ -21,6 +21,8 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { NavbarComponent } from './components/navbar/navbar.component'; 
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FIREBASE_OPTIONS } from  '@angular/fire/compat';
+import { PreguntadosComponent } from './preguntados/preguntados.component';
+import { TriviaService } from './trivia.service';
  
  
 export const environment = {
@@ -57,6 +59,7 @@ const firebaseConfig = {
     Juego2Component,
     FormularioComponent,
     NavbarComponent,
+    PreguntadosComponent,
 
  
  
@@ -73,6 +76,7 @@ const firebaseConfig = {
   providers: [
     ChatService,
     Juego2Service,
+    TriviaService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
   ],
   bootstrap: [AppComponent],

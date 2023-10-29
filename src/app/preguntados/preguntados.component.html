@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Juego Preguntados</h1>
+    
+    <div *ngIf="preguntaActual">
+      <h2>Pregunta:</h2>
+      <p>{{ preguntaActual.pregunta }}</p>
+      
+      <h2>Opciones de Respuesta:</h2>
+      <ul>
+        <li *ngFor="let opcion of opciones">
+          <button (click)="seleccionarRespuesta(opcion)">{{ opcion }}</button>
+        </li>
+      </ul>
+      
+      <h2>Puntaje: {{ puntaje }}</h2>
+    </div>
+    
+    <div *ngIf="!preguntaActual">
+      <h2>Juego completado</h2>
+      <p>Puntaje final: {{ puntaje }}</p>
+      <button (click)="reiniciarJuego()">Reiniciar</button>
+    </div>
+  </div>
+  

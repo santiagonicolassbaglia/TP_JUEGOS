@@ -11,6 +11,7 @@ import {ChatComponent} from './chat/chat.component';
 import {Chat2Component} from './chat2/chat2.component';
 import { Juego2Component } from './juego2/juego2.component';
 import { FormularioComponent } from './formulario/formulario.component';
+import { PreguntadosComponent } from './preguntados/preguntados.component';
  
 
 
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'formulario', component: FormularioComponent },
   { path: 'juego2', component: Juego2Component },  
   { path: 'registro', component: RegistroComponent },
- 
+  { path: 'preguntados', component: PreguntadosComponent },
   { path: 'juego-ahorcado', component: JuegoAhorcadoComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'chat2', component: Chat2Component },
